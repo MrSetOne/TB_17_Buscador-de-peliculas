@@ -23,7 +23,7 @@ async function getFilms(toSearch) {
                                             <div class="card-body">
                                                 <h2 class="card-title">${film.title}</h2>
                                                 <p class="card-text">${film.overview.substring(0,160)}...</p>
-                                                <div class="d-flex container-fluid">
+                                                <div class="d-flex container-fluid justify-content-between">
                                                     <p class="card__gen">${right_gen.join(", ")}</p>
                                                     <p class="card__vote">${film.vote_average}</p>
                                                 </div>
