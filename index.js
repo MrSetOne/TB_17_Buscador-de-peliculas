@@ -6,22 +6,23 @@ async function getFilms(toSearch) {
         genres = gen.data.genres
         const films = res.data.results;
         films.forEach(film => {
-            let count = 0;
+            let right_gen = [];
             film.genre_ids.forEach(genre_id => {
                 genres.forEach(genre => {
                     if (genre.id == genre_id) {
-                        film.genre_ids.push(genre.name)
-                        count++;
+                        right_gen.push(genre.name)
                     }
                 });
             })
-            film.genre_ids.splice(0, count)
-            console.log(film);
+            console.log(right_gen);
             printZone.innerHTML += `<div class="card">
                                         <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="">
                                         <h2 class="card__name">${film.title}</h2>
                                         <p class="card__description">${film.overview}</p>
-                                        <p class="card__vote">${film.vote_average}</p>
+                                        <div class="card__info">
+                                            <p class="card__gen">${right_gen.join(", ")}</p>
+                                            <p class="card__vote">${film.vote_average}</p>
+                                        </div>
                                     </div>`
         });
     } catch (error) {
