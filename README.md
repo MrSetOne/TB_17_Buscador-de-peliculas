@@ -1,1 +1,5 @@
 # TB_17_Buscador-de-peliculas
+
+https://api.themoviedb.org/3/movie/550?api_key=db07a005b100923233a26c975a5b6200
+
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjA3YTAwNWIxMDA5MjMyMzNhMjZjOTc1YTViNjIwMCIsInN1YiI6IjYyN2JhMTQzMzIzZWJhMDA1MjQyZTU5ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ylPZs_A4EgruV_kL5_LCFQq56bkGtdrVwb1p8WyUyWM
