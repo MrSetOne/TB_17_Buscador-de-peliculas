@@ -5,6 +5,8 @@ async function getFilms(toSearch, where) {
         const res = await axios.get(`https://api.themoviedb.org/3/search/${findIn}?${key}&language=es&query=${toSearch.replace(/ /g, "+")}`)
         const cleanData = res.data.results;
 
+        console.log(cleanData);
+
         if (findIn == "movie") {
             const gen = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?${key}&language=es`)
             const genres = gen.data.genres;
@@ -19,7 +21,7 @@ async function getFilms(toSearch, where) {
                             }
                         });
                     })
-                    printZone.innerHTML += `<div class="card m-auto mt-2" style="width:25rem; height:max(47.5rem, min-content)">
+                    printZone.innerHTML += `<a target="_blank" href="https://www.themoviedb.org/movie/${film.id}" class="card m-auto mt-2" style="width:25rem; height:max(47.5rem, min-content); color:black; text-decoration: none;">
                                                 <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" class="card-img-top" style="height: 30rem;object-fit: cover;" alt="${film.title}">
                                                 <div class="card-body">
                                                     <h2 class="card-title">${film.title}</h2>
@@ -29,12 +31,27 @@ async function getFilms(toSearch, where) {
                                                         <p class="card__vote">${film.vote_average}</p>
                                                     </div>
                                                 </div>
-                                            </div>`
+                                            </a>`
 
                 }
             });
         } else if (where == "person") {
             console.log(cleanData);
+            printZone.innerHTML = "";
+            cleanData.forEach(person => {
+                printZone.innerHTML += `<a target="_blank" href="https://www.themoviedb.org/person/${person.id}" class="card m-auto mt-2" style="width:25rem; height:max(47.5rem, min-content);color:black; text-decoration: none;">
+                                                <img src="https://image.tmdb.org/t/p/w500${person.profile_path}" class="card-img-top" style="height: 30rem;object-fit: cover;" alt="${person.name}">
+                                                <div class="card-body">
+                                                    <h2 class="card-title">${person.name}</h2>
+                                                    <h3>Conocido por...</h3>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">${person.known_for[0].title}</li>
+                                                        <li class="list-group-item">${person.known_for[1].title}</li>
+                                                        <li class="list-group-item">${person.known_for[2].title}</li>
+                                                    </ul>
+                                                </div>
+                                            </a>`
+            })
         }
 
 
