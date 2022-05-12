@@ -12,8 +12,12 @@
 <body class="bg-dark bg-gradient min-vh-100">
     <header class="navbar navbar-dark bg-primary primary sticky-top">
         <div class="container-fluid mx-2">
-            <h1 class="navbar-brand">¿Una peli?</h1>
+            <h1 class="navbar-brand text-center">¿Una peli?</h1>
             <form id="searcher" class="d-flex">
+                <select class="form-select me-2" id="where">
+                    <option value="movie">Pelicula</option>
+                    <option disabled value="person">Actor</option>
+                </select>
                 <input type="text" class="form-control me-2" name="search" id="search">
                 <button class="btn btn-info" type="submit">Buscar:</button>
             </form>
